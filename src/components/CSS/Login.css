@@ -1,0 +1,108 @@
+.outer{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin-top: 100px;
+    width:100%;
+    height:600px;    
+}
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+    width:400px;
+    height:460px;
+    border-radius: 10px;
+    align-items: center;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.heading{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:75%;
+    height:50px;
+    margin-top:10px;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+#login-btn{
+    width:50%;
+    font-size: 20px;
+    border: 0px;
+    border-radius: 5px;
+}
+
+#login-btn:hover{
+    background-color: #a64dff;
+    color:white;
+}
+
+#signup-btn{
+    width:50%;
+    font-size: 20px;
+    border: 0px;
+    border-radius: 5px;
+}
+
+#signup-btn:hover{
+    background-color: #a64dff;
+    color: white;
+}
+
+.input-div{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    align-items: center;
+    width:75%;
+    height: auto;
+}
+
+.input{
+    width:300px;
+    height:40px;
+    margin:10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+.input:focus{
+    outline: 1px solid gray;
+}
+
+.input::placeholder{
+    font-size: 20px;
+    text-align:start;
+    padding-left: 10px;
+}
+
+.enter-btn{
+    padding:10px 50px;
+    height:50px;
+    background-color: #9933ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top:10px;
+}
+
+.enter-btn:hover{
+    background-color: #a64dff;
+}
+
+.new-user{
+    margin-top: 20px;
+    border: 0px;
+    font-size: 20px;
+    background-color: white;
+}
