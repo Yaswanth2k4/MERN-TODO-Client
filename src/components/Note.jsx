@@ -27,7 +27,7 @@ function Note(props)
 
             <label className="note-label">{props.text}</label>
 
-            <MdOutlineEdit className="edit-icon"/>
+            <MdOutlineEdit className="edit-icon" />
             <button type="button" className="edit-icon button-on-edit-icon" onClick={e=>setVisible("visible")} name={props.id} >
             </button>
 

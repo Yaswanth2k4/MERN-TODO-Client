@@ -4,6 +4,7 @@ import "./CSS/Login.css";
 import axios from "axios";
 import { doLogin } from "../auth";
 import { Navigate } from "react-router-dom";
+import Loader from "./Loader";
 
 function Login()
 {
@@ -14,7 +15,7 @@ function Login()
         color:"white"
     })
     const [signStyle,setSignStyle]=useState({
-        backgroundColor:"lightgray",
+        backgroundColor:"#e6e6e6",
         color:"black"
     })
     const [input,setInput]=useState({
@@ -24,14 +25,15 @@ function Login()
     });
     const [message,setMessage]=useState("");
     const [color,setColor]=useState("red");
-    const [logged,setLogged]=useState(false)
+    const [logged,setLogged]=useState(false);
+    const [visibility,setVisibility]=useState("hidden");
 
     function handleLogin()
     {
         setHead("Login")
         setRegister(true);
         setSignStyle({
-            backgroundColor:"lightgray",
+            backgroundColor:"#e6e6e6",
             color:"black"
         })
         setLogStyle({
@@ -45,7 +47,7 @@ function Login()
         setHead("Signup");  
         setRegister(false);
         setLogStyle({
-            backgroundColor:"lightgray",
+            backgroundColor:"#e6e6e6",
             color:"black"
         })
         setSignStyle({
@@ -70,11 +72,14 @@ function Login()
     {
         if(e.target.name==="Signup")
         {
-            if(input.name!=="" && input.email!=="" && input.password!=="")
+            if(input.name!=="" && input.email!=="" && input.email.endsWith(".com") && !input.email.endsWith("@.com") && input.password!=="")
             {
+                setVisibility("visible");
+                console.log(visibility);
                 axios.post(`${process.env.REACT_APP_API}/register`,{name:input.name,email:input.email,password:input.password})
                 .then(res=>res.data)
                 .then(data=>{
+                    setVisibility("hidden")
                     if(data.message==="Registered successfully, please login")
                     {
                         setColor("green");
@@ -90,11 +95,13 @@ function Login()
         }
         else if(e.target.name==="Login")
         {
-            if(input.email!=="" && input.password!=="")
+            if(input.email!=="" && input.email.endsWith(".com") && !input.email.endsWith("@.com") && input.password!=="")
             {
+                setVisibility("visible");
                 axios.post(`${process.env.REACT_APP_API}/login`,{email:input.email,password:input.password})
                 .then(res=>res.data)
                 .then(data=>{
+                    setVisibility("hidden")
                     if(data.message!=="wrong password" && data.message!=="User not found, please register")
                     {
                         setColor("green");
@@ -114,6 +121,7 @@ function Login()
     return(
         <div>
             <Header />
+            <Loader style={{visibility:visibility}} />
             <div className="outer">
                 <div className="login-container">
                     <h1 className="heading">{heading}</h1>

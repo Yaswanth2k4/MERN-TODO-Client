@@ -10,8 +10,8 @@ function App()
     <BrowserRouter >
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/" element={<PrivateRoute />} >
-            <Route path="/todo" element={<Todo email="yaswanth@gmail.com" /> } />
+        <Route path="/todo" element={<PrivateRoute />} >
+            <Route path="/todo" element={<Todo/> } />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -2,6 +2,7 @@ import React,{useState,useEffect} from "react";
 import Header from "./Header";
 import "./CSS/Todo.css";
 import InputBox from "./InputBox";
+import Loader from "./Loader";
 import Note from "./Note";
 import axios from "axios";
 import { doLogout,getCurrentUser } from "../auth";
@@ -9,13 +10,18 @@ import { Navigate } from "react-router-dom";
 
 function Todo() {
       const[notes,setNotes]=useState([]);
-      const [loggedout,setLogged]=useState(false);
+      const [loggedout,setLoggedout]=useState(false);
+      const [visibility,setVisibility]=useState("hidden");
 
       useEffect(()=>{
         try{
+          setVisibility("visible");
           axios.get(`${process.env.REACT_APP_API}/notes/getnotes/${getCurrentUser()}`)
           .then((res)=>res.data)
-          .then(data=>setNotes(data));
+          .then(data=>{
+            setVisibility("hidden");
+            return setNotes(data)
+          });
         }
         catch(err)
         {
@@ -70,12 +76,13 @@ function Todo() {
       function logout()
       {
         doLogout();
-        setLogged(true);
+        setLoggedout(true);
       }
 
   return (
     <div>
       <Header />
+      <Loader style={{visibility:visibility}} />
       <div className="list-container">
         <button className="logout" onClick={logout}>Logout</button>
         {loggedout && <Navigate to="/" />}
