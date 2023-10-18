@@ -5,6 +5,19 @@ import axios from "axios";
 import { doLogin } from "../auth";
 import { Navigate } from "react-router-dom";
 import Loader from "./Loader";
+import { Tilt } from 'react-tilt'
+
+const defaultOptions = {
+	reverse:        false,  
+	max:            35,     
+	perspective:    1000,    
+	scale:          1.1,    
+	speed:          1000, 
+	transition:     true,   
+	axis:           null,   
+	reset:          true,    
+	easing:         "cubic-bezier(.03,.98,.52,.99)",
+}
 
 function Login()
 {
@@ -123,7 +136,7 @@ function Login()
             <Header />
             <Loader style={{visibility:visibility}} />
             <div className="outer">
-                <div className="login-container">
+                <Tilt options={defaultOptions} className="login-container">
                     <h1 className="heading">{heading}</h1>
                     <div className="buttons">
                         <button style={logStyle} onClick={handleLogin} id="login-btn"  >Login</button>
@@ -144,7 +157,7 @@ function Login()
                         <button className="new-user" onClick={handleSignUp}>new user? <span style={{color:"#9933ff"}}>Signup</span></button>
                     )}
                     <p style={{color:color}} >{message}</p>
-                </div>
+                </Tilt>
             </div>
         </div>
     )

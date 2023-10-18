@@ -7,6 +7,7 @@
     flex-direction: row;
     border-bottom: 1px solid lightgray;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    flex-wrap:wrap;
 }
 
 .delete-icon{
@@ -24,11 +25,12 @@
 .note-label{
     display: flex;
     flex-direction: column;
-    font-size: 20px;
-    margin-top: 18px;
-    margin-left: 17px;
     flex-wrap:wrap;
+    font-size: 20px;
+    margin-left: 18px;
     font-family:'Times New Roman', Times, serif;
+    width:275px;
+    padding:18px 0px;
 }
 
 .edit-icon{
@@ -57,7 +59,7 @@
     width:275px;
     margin-top: -1px;
     font-size: 20px;
-    margin-left: 15px;
+    margin-left: 18px;
     font-family:'Times New Roman', Times, serif;
     border:none;
 }

@@ -25,7 +25,7 @@ function Note(props)
             <button type="button" className="delete-icon button-on-delete-icon" onClick={deleteClick} name={props.id} >
             </button>
 
-            <label className="note-label">{props.text}</label>
+            <div className="note-label">{props.text}</div>
 
             <MdOutlineEdit className="edit-icon" />
             <button type="button" className="edit-icon button-on-edit-icon" onClick={e=>setVisible("visible")} name={props.id} >
@@ -36,7 +36,7 @@ function Note(props)
                 <button type="button" className="delete-icon button-on-delete-icon" onClick={e=>setVisible("hidden")} >
                 </button>
 
-                <input type="text" contentEditable="true" onChange={e=>setValue(e.target.value)}  className="note-edit-input note-label" value={value}></input>
+                <input type="text" onChange={e=>setValue(e.target.value)}  className="note-edit-input note-label" value={value}></input>
                 
                 <MdOutlineDoneOutline className="edit-icon" />
                 <button type="button" className="edit-icon button-on-edit-icon" onClick={doneClick} name={props.id} >
