@@ -16,13 +16,13 @@ function InputBox(props)
     }
 
     return(
-        <div className="input-box">
+        <form className="input-box" onSubmit={e=>{e.preventDefault()}}>
             <input className="text-input" type="text" placeholder="New Note" onChange={handleChange} value={value} ></input>
             <button className="add-button" onClick={handleClick} >
                 <div className="vertical"></div>
                 <div className="horizontal"></div>
             </button>
-        </div>
+        </form>
     )
 }
 

@@ -10,6 +10,7 @@ function Note(props)
 
     function deleteClick(event)
     {
+        setVisible("hidden");
         props.deleteNote(event.target.name)
     }
 
@@ -31,13 +32,15 @@ function Note(props)
             <button type="button" className="edit-icon button-on-edit-icon" onClick={e=>setVisible("visible")} name={props.id} >
             </button>
 
-            <div style={{visibility:visibility}} className="note-input-box">
+            <div style={{visibility:visibility}} className="edit-box">
+                {/* cancel edit button*/}
                 <TbPencilCancel className="delete-icon"/>
-                <button type="button" className="delete-icon button-on-delete-icon" onClick={e=>setVisible("hidden")} >
+                <button type="button" className="delete-icon button-on-delete-icon" onClick={e=>setVisible("hidden")} > 
                 </button>
 
                 <input type="text" onChange={e=>setValue(e.target.value)}  className="note-edit-input note-label" value={value}></input>
-                
+
+                {/* Done edit button */}
                 <MdOutlineDoneOutline className="edit-icon" />
                 <button type="button" className="edit-icon button-on-edit-icon" onClick={doneClick} name={props.id} >
                 </button>
