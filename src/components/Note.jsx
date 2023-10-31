@@ -32,7 +32,7 @@ function Note(props)
             <button type="button" className="edit-icon button-on-edit-icon" onClick={e=>setVisible("visible")} name={props.id} >
             </button>
 
-            <div style={{visibility:visibility}} className="edit-box">
+            <form style={{visibility:visibility}} className="edit-box">
                 {/* cancel edit button*/}
                 <TbPencilCancel className="delete-icon"/>
                 <button type="button" className="delete-icon button-on-delete-icon" onClick={e=>setVisible("hidden")} > 
@@ -44,7 +44,7 @@ function Note(props)
                 <MdOutlineDoneOutline className="edit-icon" />
                 <button type="button" className="edit-icon button-on-edit-icon" onClick={doneClick} name={props.id} >
                 </button>
-            </div>
+            </form>
         </div>
     )
 }
