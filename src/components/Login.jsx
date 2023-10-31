@@ -5,19 +5,7 @@ import axios from "axios";
 import { doLogin } from "../auth";
 import { Navigate } from "react-router-dom";
 import Loader from "./Loader";
-import { Tilt } from 'react-tilt'
-
-const defaultOptions = {
-	reverse:        false,  
-	max:            20,     
-	perspective:    1000,    
-	scale:          1.1,    
-	speed:          1000, 
-	transition:     true,   
-	axis:           null,   
-	reset:          true,    
-	easing:         "cubic-bezier(.03,.98,.52,.99)",
-}
+import Tilt from "react-parallax-tilt";
 
 function Login()
 {
@@ -135,30 +123,32 @@ function Login()
         <div>
             <Header />
             <Loader style={{visibility:visibility}} />
-            <div className="outer">
-                <Tilt options={defaultOptions} className="login-container">
-                    <h1 className="heading">{heading}</h1>
-                    <div className="buttons">
-                        <button style={logStyle} onClick={handleLogin} id="login-btn"  >Login</button>
-                        <button style={signStyle} onClick={handleSignUp} id="signup-btn">Signup</button>
-                    </div>
+            <Tilt>
+                <div className="outer">
+                    <div className="login-container">
+                        <h1 className="heading">{heading}</h1>
+                        <div className="buttons">
+                            <button style={logStyle} onClick={handleLogin} id="login-btn"  >Login</button>
+                            <button style={signStyle} onClick={handleSignUp} id="signup-btn">Signup</button>
+                        </div>
 
-                    <form className="input-div" onSubmit={(e)=>e.preventDefault()}>
-                        {!Registered && (
-                            <input type="text" onChange={handleChange} className="input" name="name" value={input.name} placeholder="Name" required="true"/>
+                        <form className="input-div" onSubmit={(e)=>e.preventDefault()}>
+                            {!Registered && (
+                                <input type="text" onChange={handleChange} className="input" name="name" value={input.name} placeholder="Name" required="true"/>
+                            )}
+                            <input type="email" onChange={handleChange} className="input" name="email" value={input.email} placeholder="Email address" required/>
+                            <input type="password" onChange={handleChange} className="input" name="password" value={input.password} placeholder="Password" required/>
+                            <input type="submit" onClick={handleClick} className="enter-btn" name={heading} value={heading} />
+                            {logged && <Navigate to="/todo" />}
+                        </form>
+                                
+                        {Registered && (
+                            <button className="new-user" onClick={handleSignUp}>new user? <span style={{color:"#9933ff"}}>Signup</span></button>
                         )}
-                        <input type="email" onChange={handleChange} className="input" name="email" value={input.email} placeholder="Email address" required/>
-                        <input type="password" onChange={handleChange} className="input" name="password" value={input.password} placeholder="Password" required/>
-                        <input type="submit" onClick={handleClick} className="enter-btn" name={heading} value={heading} />
-                        {logged && <Navigate to="/todo" />}
-                    </form>
-                            
-                    {Registered && (
-                        <button className="new-user" onClick={handleSignUp}>new user? <span style={{color:"#9933ff"}}>Signup</span></button>
-                    )}
-                    <p style={{color:color}} >{message}</p>
-                </Tilt>
-            </div>
+                        <p style={{color:color}} >{message}</p>
+                    </div>
+                </div>
+            </Tilt>
         </div>
     )
 }
